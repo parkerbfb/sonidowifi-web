@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SonidoWifi — el audio de tu PC, en tu teléfono</title>
+<meta name="description" content="Escuchá todo lo que suena en tu PC con Windows en tu teléfono Android, por WiFi o cable USB, con poco retraso. Gratis.">
+<link rel="icon" href="favicon.png">
+<style>
+  :root {
+    --bg: #F4F6F9; --card: #FFFFFF; --border: #E3E7ED; --text: #1A1D21; --text2: #647080;
+    --primary: #1E88E5; --on-primary: #FFFFFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111418; --card: #1B1F25; --border: #2A3038; --text: #E7EAEE; --text2: #98A2AE;
+      --primary: #5AAEF0; --on-primary: #0B1826;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 system-ui, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 16px 56px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+  header img { width: 64px; height: 64px; }
+  h1 { font-size: 34px; margin: 0; letter-spacing: -0.5px; }
+  .sub { color: var(--text2); margin: 4px 0 28px; font-size: 18px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 22px 24px; margin-bottom: 16px;
+  }
+  .card h2 { font-size: 18px; margin: 0 0 6px; }
+  .card p { margin: 0 0 14px; color: var(--text2); }
+  .botones { display: flex; flex-wrap: wrap; gap: 10px; }
+  .boton {
+    display: inline-block; padding: 12px 22px; border-radius: 999px; text-decoration: none;
+    font-weight: 600; background: var(--primary); color: var(--on-primary);
+  }
+  .boton.sec { background: transparent; color: var(--primary); border: 1px solid var(--border); }
+  .nota { font-size: 14px; color: var(--text2); margin-top: 12px; }
+  ol { margin: 0; padding-left: 22px; }
+  ol li { margin-bottom: 6px; }
+  ul.feat { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  ul.feat li { color: var(--text2); }
+  ul.feat b { color: var(--text); display: block; }
+  footer { color: var(--text2); font-size: 14px; text-align: center; margin-top: 28px; }
+  footer a { color: var(--primary); }
+  [data-lang="en"] { display: none; }
+  html[lang="en"] [data-lang="es"] { display: none; }
+  html[lang="en"] [data-lang="en"] { display: revert; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="icono.png" alt="">
+    <div>
+      <h1>SonidoWifi</h1>
+    </div>
+  </header>
+  <p class="sub" data-lang="es">El audio de tu PC, en tu teléfono. Por WiFi o cable USB, con poco retraso. Gratis.</p>
+  <p class="sub" data-lang="en">Your PC's audio, on your phone. Over Wi-Fi or USB cable, with low delay. Free.</p>
+
+  <section class="card">
+    <h2 data-lang="es">1. Instalá la app en tu PC (Windows 10 u 11)</h2>
+    <h2 data-lang="en">1. Install the app on your PC (Windows 10 or 11)</h2>
+    <p data-lang="es">Es la que captura el sonido de la computadora y lo manda al teléfono.</p>
+    <p data-lang="en">It captures the computer's sound and sends it to the phone.</p>
+    <div class="botones">
+      <!-- Cambiar PRODUCT_ID por el ID de la app en Partner Center cuando esté publicada. -->
+      <a class="boton" href="https://apps.microsoft.com/detail/PRODUCT_ID">
+        <span data-lang="es">Microsoft Store</span><span data-lang="en">Microsoft Store</span></a>
+      <a class="boton sec" href="https://github.com/parkerbfb/sonidowifi-web/releases/latest/download/SonidoWifi.exe">
+        <span data-lang="es">Descarga directa (.exe)</span><span data-lang="en">Direct download (.exe)</span></a>
+    </div>
+    <p class="nota" data-lang="es">Con la descarga directa Windows puede mostrar "Windows protegió su PC": tocá
+      <b>Más información → Ejecutar de todas formas</b>. Desde la Microsoft Store no aparece.</p>
+    <p class="nota" data-lang="en">With the direct download Windows may show "Windows protected your PC": click
+      <b>More info → Run anyway</b>. It doesn't appear when installing from the Microsoft Store.</p>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="es">2. Instalá la app en tu teléfono (Android 7 o superior)</h2>
+    <h2 data-lang="en">2. Install the app on your phone (Android 7 or later)</h2>
+    <div class="botones">
+      <a class="boton" href="https://play.google.com/store/apps/details?id=com.sonidowifi">Google Play</a>
+      <a class="boton sec" href="https://github.com/parkerbfb/sonidowifi-web/releases/latest/download/SonidoWifi.apk">
+        <span data-lang="es">APK directo</span><span data-lang="en">Direct APK</span></a>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="es">3. Conectá</h2>
+    <h2 data-lang="en">3. Connect</h2>
+    <ol data-lang="es">
+      <li>Abrí SonidoWifi en la PC.</li>
+      <li>Con el teléfono en el mismo WiFi (o por cable USB con el anclaje USB activado), abrí SonidoWifi y tocá <b>Conectar</b>.</li>
+      <li>Poné algo a sonar en la PC.</li>
+    </ol>
+    <ol data-lang="en">
+      <li>Open SonidoWifi on the PC.</li>
+      <li>With the phone on the same Wi-Fi (or via USB cable with USB tethering on), open SonidoWifi and tap <b>Connect</b>.</li>
+      <li>Play something on the PC.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <ul class="feat" data-lang="es">
+      <li><b>Todo el audio de la PC</b>juegos, películas, música, llamadas.</li>
+      <li><b>Poco retraso</b>modos Juegos, Películas, Música o el retraso que elijas.</li>
+      <li><b>WiFi o cable USB</b>por cable: menos retraso y el teléfono se carga.</li>
+      <li><b>Privado</b>sin cuentas, sin publicidad, sin rastreo. El audio no sale de tu red.</li>
+    </ul>
+    <ul class="feat" data-lang="en">
+      <li><b>All of the PC's audio</b>games, movies, music, calls.</li>
+      <li><b>Low delay</b>Games, Movies, Music modes, or the delay you choose.</li>
+      <li><b>Wi-Fi or USB cable</b>by cable: lower delay and the phone charges.</li>
+      <li><b>Private</b>no accounts, no ads, no tracking. Audio never leaves your network.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <a href="privacidad.html" data-lang="es">Política de privacidad</a>
+    <a href="privacidad.html" data-lang="en">Privacy policy</a>
+    · © 2026 Boris Furtado
+  </footer>
+</main>
+<script>
+  // Español para quien tenga el navegador en español; inglés para el resto.
+  if (!/^es\b/i.test(navigator.language || "")) document.documentElement.lang = "en";
+</script>
+</body>
+</html>
