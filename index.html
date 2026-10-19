@@ -85,8 +85,11 @@
   details p { margin: 8px 0 0; }
   footer { color: var(--text2); font-size: 14px; text-align: center; margin-top: 28px; }
   footer a { color: var(--primary); }
-  /* Solo se esconde el idioma que no se usa: el otro conserva su display (grid, flex…). */
-  html:not([lang="en"]) [data-lang="en"], html[lang="en"] [data-lang="es"] { display: none !important; }
+  /* Solo se esconden los idiomas que no se usan: el que queda conserva su display (grid,
+     flex…). Sin JavaScript queda el español. */
+  html:not([lang="en"]):not([lang="pt"]) [data-lang]:not([data-lang="es"]),
+  html[lang="en"] [data-lang]:not([data-lang="en"]),
+  html[lang="pt"] [data-lang]:not([data-lang="pt"]) { display: none !important; }
 </style>
 </head>
 <body>
@@ -99,6 +102,7 @@
   </header>
   <p class="sub" data-lang="es">El audio de tu PC, en tu teléfono. Por WiFi o cable USB, con poco retraso. Gratis.</p>
   <p class="sub" data-lang="en">Your PC's audio, on your phone. Over Wi-Fi or USB cable, with low delay. Free.</p>
+  <p class="sub" data-lang="pt">O áudio do seu PC, no seu celular. Por Wi-Fi ou cabo USB, com pouco atraso. Grátis.</p>
 
   <div data-lang="es">
     <div class="capturas">
@@ -118,40 +122,56 @@
       <img src="img/en-5.webp" width="480" height="853" loading="lazy" alt="Dark theme">
     </div>
   </div>
+  <div data-lang="pt">
+    <div class="capturas">
+      <img src="img/pt-1.webp" width="480" height="853" loading="lazy" alt="Seu celular vira caixa de som do PC: tela principal conectada">
+      <img src="img/pt-2.webp" width="480" height="853" loading="lazy" alt="Pause e troque de música pela tela de bloqueio">
+      <img src="img/pt-3.webp" width="480" height="853" loading="lazy" alt="Modos Jogos, Filmes e Música">
+      <img src="img/pt-4.webp" width="480" height="853" loading="lazy" alt="Botão nas Configurações rápidas">
+      <img src="img/pt-5.webp" width="480" height="853" loading="lazy" alt="Tema escuro">
+    </div>
+  </div>
 
   <section class="card">
     <h2 data-lang="es">1. Instalá la app en tu PC (Windows 10 u 11)</h2>
     <h2 data-lang="en">1. Install the app on your PC (Windows 10 or 11)</h2>
+    <h2 data-lang="pt">1. Instale o app no seu PC (Windows 10 ou 11)</h2>
     <p data-lang="es">Es la que captura el sonido de la computadora y lo manda al teléfono.</p>
     <p data-lang="en">It captures the computer's sound and sends it to the phone.</p>
+    <p data-lang="pt">É ele que captura o som do computador e manda para o celular.</p>
     <div class="botones">
       <!-- Cambiar PRODUCT_ID por el ID de la app en Partner Center cuando esté publicada. -->
       <a class="boton" href="https://apps.microsoft.com/detail/PRODUCT_ID">
-        <span data-lang="es">Microsoft Store</span><span data-lang="en">Microsoft Store</span></a>
+        <span data-lang="es">Microsoft Store</span><span data-lang="en">Microsoft Store</span><span data-lang="pt">Microsoft Store</span></a>
       <a class="boton sec" href="https://github.com/parkerbfb/sonidowifi-web/releases/latest/download/SonidoWifi.exe">
-        <span data-lang="es">Descarga directa (.exe)</span><span data-lang="en">Direct download (.exe)</span></a>
+        <span data-lang="es">Descarga directa (.exe)</span><span data-lang="en">Direct download (.exe)</span><span data-lang="pt">Download direto (.exe)</span></a>
     </div>
     <p class="nota" data-lang="es">Con la descarga directa Windows puede mostrar "Windows protegió su PC": tocá
       <b>Más información → Ejecutar de todas formas</b>. Desde la Microsoft Store no aparece.</p>
     <p class="nota" data-lang="en">With the direct download Windows may show "Windows protected your PC": click
       <b>More info → Run anyway</b>. It doesn't appear when installing from the Microsoft Store.</p>
+    <p class="nota" data-lang="pt">Com o download direto, o Windows pode mostrar "O Windows protegeu o computador": clique em
+      <b>Mais informações → Executar assim mesmo</b>. Pela Microsoft Store isso não aparece.</p>
   </section>
 
   <section class="card">
     <h2 data-lang="es">2. Instalá la app en tu teléfono (Android 7 o superior)</h2>
     <h2 data-lang="en">2. Install the app on your phone (Android 7 or later)</h2>
+    <h2 data-lang="pt">2. Instale o app no seu celular (Android 7 ou superior)</h2>
     <p data-lang="es">O escaneá con la cámara del teléfono el código QR que muestra la app de la PC.</p>
     <p data-lang="en">Or scan the QR code shown by the PC app with your phone's camera.</p>
+    <p data-lang="pt">Ou escaneie com a câmera do celular o código QR que o app do PC mostra.</p>
     <div class="botones">
       <a class="boton" href="https://play.google.com/store/apps/details?id=com.sonidowifi">Google Play</a>
       <a class="boton sec" href="https://github.com/parkerbfb/sonidowifi-web/releases/latest/download/SonidoWifi.apk">
-        <span data-lang="es">APK directo</span><span data-lang="en">Direct APK</span></a>
+        <span data-lang="es">APK directo</span><span data-lang="en">Direct APK</span><span data-lang="pt">APK direto</span></a>
     </div>
   </section>
 
   <section class="card">
     <h2 data-lang="es">3. Conectá</h2>
     <h2 data-lang="en">3. Connect</h2>
+    <h2 data-lang="pt">3. Conecte</h2>
     <ol data-lang="es">
       <li>Abrí SonidoWifi en la PC.</li>
       <li>Con el teléfono en el mismo WiFi (o por cable USB con el anclaje USB activado), abrí SonidoWifi y tocá <b>Conectar</b>. O escaneá el QR de la PC: se conecta solo.</li>
@@ -161,6 +181,11 @@
       <li>Open SonidoWifi on the PC.</li>
       <li>With the phone on the same Wi-Fi (or via USB cable with USB tethering on), open SonidoWifi and tap <b>Connect</b>. Or scan the PC's QR code: it connects by itself.</li>
       <li>Play something on the PC.</li>
+    </ol>
+    <ol data-lang="pt">
+      <li>Abra o SonidoWifi no PC.</li>
+      <li>Com o celular no mesmo Wi-Fi (ou pelo cabo USB com a ancoragem USB ativada), abra o SonidoWifi e toque em <b>Conectar</b>. Ou escaneie o QR do PC: ele conecta sozinho.</li>
+      <li>Coloque algo para tocar no PC.</li>
     </ol>
   </section>
 
@@ -184,6 +209,16 @@
       <li><b>Extra volume and night mode</b>louder, more bass or clearer voices; and at night, clear dialogue without startling explosions.</li>
       <li><b>Easy to connect</b>finds the PC by itself, or scan its QR code. If something fails, it tells you what to check.</li>
       <li><b>Free and private</b>no ads, no accounts, no time limits. Audio never leaves your network.</li>
+    </ul>
+    <ul class="feat" data-lang="pt">
+      <li><b>Todo o áudio do PC</b>jogos, filmes, música, chamadas.</li>
+      <li><b>Pouco atraso</b>modos Jogos, Filmes, Música ou o atraso que você escolher.</li>
+      <li><b>Wi-Fi ou cabo USB</b>pelo cabo: menos atraso e o celular carrega.</li>
+      <li><b>Controle o PC pelo celular</b>pausar, próxima e anterior pela notificação ou pela tela de bloqueio.</li>
+      <li><b>Vários celulares ao mesmo tempo</b>cada um com seus fones: ideal para ver um filme sem incomodar ninguém.</li>
+      <li><b>Volume extra e modo noturno</b>mais alto, mais graves ou vozes claras; e à noite, diálogos claros sem explosões que assustam.</li>
+      <li><b>Conecta fácil</b>encontra o PC sozinho, ou escaneie o QR dele. E se algo falhar, mostra o que verificar.</li>
+      <li><b>Grátis e privado</b>sem anúncios, sem contas, sem limite de tempo. O áudio não sai da sua rede.</li>
     </ul>
   </section>
 
@@ -249,16 +284,61 @@
       <p>For now the PC needs Windows 10 or 11, and the phone Android 7 or newer.</p>
     </details>
   </section>
+  <section class="card" data-lang="pt">
+    <h2>Perguntas frequentes</h2>
+    <details>
+      <summary>Preciso de Bluetooth ou de um cabo especial?</summary>
+      <p>Não. Basta o PC e o celular estarem no mesmo Wi-Fi (o PC pode estar ligado ao roteador por cabo). Se quiser ainda menos atraso, use o cabo USB do celular com a ancoragem USB.</p>
+    </details>
+    <details>
+      <summary>Quanto atraso tem?</summary>
+      <p>No modo Jogos o celular guarda no máximo 30 ms de áudio, mais o tempo da sua rede (pelo cabo USB, quase nada). Em Filmes, 60 ms. Os fones Bluetooth do celular somam o próprio atraso.</p>
+    </details>
+    <details>
+      <summary>Posso ouvir o PC com meus fones Bluetooth?</summary>
+      <p>Sim: conecte-os ao celular e o SonidoWifi leva o áudio do PC até eles. Serve para PCs sem Bluetooth.</p>
+    </details>
+    <details>
+      <summary>Gasta dados móveis?</summary>
+      <p>Não: o áudio passa pela sua rede local, não pela internet. Sem compressão usa cerca de 1,5 Mbps de Wi-Fi; com a qualidade Opus, 10 vezes menos.</p>
+    </details>
+    <details>
+      <summary>O celular não encontra o PC</summary>
+      <p>Abra a janela do PC: se aparecer um aviso do firewall, clique em «Permitir no firewall». Você também pode escanear o QR da janela com a câmera do celular, que conecta direto. No celular, «O PC não aparece?» mostra o que verificar.</p>
+    </details>
+    <details>
+      <summary>É grátis mesmo?</summary>
+      <p>Sim: sem anúncios, sem contas e sem limite de tempo. A compressão Opus e os vários celulares ao mesmo tempo também são grátis.</p>
+    </details>
+    <details>
+      <summary>Funciona no Mac, Linux ou iPhone?</summary>
+      <p>Por enquanto o PC precisa ter Windows 10 ou 11, e o celular Android 7 ou mais novo.</p>
+    </details>
+  </section>
 
   <footer>
     <a href="privacidad.html" data-lang="es">Política de privacidad</a>
     <a href="privacidad.html" data-lang="en">Privacy policy</a>
+    <a href="privacidad.html#pt" data-lang="pt">Política de privacidade</a>
     · © 2026 Boris Furtado
   </footer>
 </main>
 <script>
-  // Español para quien tenga el navegador en español; inglés para el resto.
-  if (!/^es\b/i.test(navigator.language || "")) document.documentElement.lang = "en";
+  // Español para quien tenga el navegador en español, portugués para el portugués e inglés
+  // para el resto. El título y la descripción también, así coinciden con lo que se ve.
+  var idioma = /^es\b/i.test(navigator.language || "") ? "es"
+             : /^pt\b/i.test(navigator.language || "") ? "pt" : "en";
+  document.documentElement.lang = idioma;
+  var CABEZA = {
+    en: ["SonidoWifi — your PC's audio, on your phone",
+         "Use your phone as a PC speaker: everything playing on Windows, on your Android phone, over Wi-Fi or USB cable, with low delay. Free, no ads."],
+    pt: ["SonidoWifi — o áudio do seu PC, no seu celular",
+         "Use o celular como caixa de som do PC: tudo o que toca no Windows, no seu Android, por Wi-Fi ou cabo USB, com pouco atraso. Grátis e sem anúncios."]
+  };
+  if (CABEZA[idioma]) {
+    document.title = CABEZA[idioma][0];
+    document.querySelector('meta[name="description"]').content = CABEZA[idioma][1];
+  }
   // Poner true cuando la app esté publicada en Google Play (hasta entonces su link no existe).
   var EN_GOOGLE_PLAY = false;
   // Mientras la app no esté en la Microsoft Store (el link todavía dice PRODUCT_ID) o en Google
