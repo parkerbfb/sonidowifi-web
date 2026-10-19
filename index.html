@@ -4,8 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SonidoWifi — el audio de tu PC, en tu teléfono</title>
-<meta name="description" content="Escuchá todo lo que suena en tu PC con Windows en tu teléfono Android, por WiFi o cable USB, con poco retraso. Gratis.">
+<meta name="description" content="Usá el celular como parlante de la PC: todo lo que suena en Windows, en tu teléfono Android, por WiFi o cable USB, con poco retraso. Gratis y sin anuncios.">
 <link rel="icon" href="favicon.png?v=2">
+<link rel="canonical" href="https://parkerbfb.github.io/sonidowifi-web/">
+<meta name="theme-color" content="#1E88E5">
+<!-- Vista previa al compartir el link (WhatsApp, redes, correo). -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SonidoWifi">
+<meta property="og:title" content="SonidoWifi — el audio de tu PC, en tu celular">
+<meta property="og:description" content="Usá el celular como parlante de la PC, por WiFi o cable USB, con poco retraso. Gratis, sin anuncios.">
+<meta property="og:url" content="https://parkerbfb.github.io/sonidowifi-web/">
+<meta property="og:image" content="https://parkerbfb.github.io/sonidowifi-web/img/compartir.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Para que Google entienda que es una app (gratis, Windows + Android). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SonidoWifi",
+  "description": "Escuchá el audio de tu PC con Windows en tu teléfono Android, por WiFi o cable USB, con poco retraso.",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Windows 10, Windows 11, Android 7+",
+  "url": "https://parkerbfb.github.io/sonidowifi-web/",
+  "image": "https://parkerbfb.github.io/sonidowifi-web/icono.png",
+  "downloadUrl": "https://github.com/parkerbfb/sonidowifi-web/releases/latest",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
 <style>
   :root {
     --bg: #F4F6F9; --card: #FFFFFF; --border: #E3E7ED; --text: #1A1D21; --text2: #647080;
@@ -26,7 +53,7 @@
   header { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
   header img { width: 64px; height: 64px; }
   h1 { font-size: 34px; margin: 0; letter-spacing: -0.5px; }
-  .sub { color: var(--text2); margin: 4px 0 28px; font-size: 18px; }
+  .sub { color: var(--text2); margin: 4px 0 20px; font-size: 18px; }
   .card {
     background: var(--card); border: 1px solid var(--border); border-radius: 20px;
     padding: 22px 24px; margin-bottom: 16px;
@@ -42,15 +69,24 @@
   .nota { font-size: 14px; color: var(--text2); margin-top: 12px; }
   ol { margin: 0; padding-left: 22px; }
   ol li { margin-bottom: 6px; }
-  ul.feat { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px;
+  ul.feat { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
   ul.feat li { color: var(--text2); }
   ul.feat b { color: var(--text); display: block; }
+  /* Capturas: una tira que se desliza de costado (en el celular entra una y media). */
+  .capturas { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+              padding: 4px 2px 14px; margin: 0 -2px 12px; }
+  .capturas img { flex: 0 0 auto; width: 200px; height: auto; aspect-ratio: 480 / 853;
+                  border-radius: 16px; scroll-snap-align: start;
+                  box-shadow: 0 6px 18px rgba(13, 71, 161, 0.18); }
+  details { border-top: 1px solid var(--border); padding: 12px 0; }
+  details:first-of-type { border-top: 0; padding-top: 4px; }
+  summary { cursor: pointer; font-weight: 600; }
+  details p { margin: 8px 0 0; }
   footer { color: var(--text2); font-size: 14px; text-align: center; margin-top: 28px; }
   footer a { color: var(--primary); }
-  [data-lang="en"] { display: none; }
-  html[lang="en"] [data-lang="es"] { display: none; }
-  html[lang="en"] [data-lang="en"] { display: revert; }
+  /* Solo se esconde el idioma que no se usa: el otro conserva su display (grid, flex…). */
+  html:not([lang="en"]) [data-lang="en"], html[lang="en"] [data-lang="es"] { display: none !important; }
 </style>
 </head>
 <body>
@@ -63,6 +99,25 @@
   </header>
   <p class="sub" data-lang="es">El audio de tu PC, en tu teléfono. Por WiFi o cable USB, con poco retraso. Gratis.</p>
   <p class="sub" data-lang="en">Your PC's audio, on your phone. Over Wi-Fi or USB cable, with low delay. Free.</p>
+
+  <div data-lang="es">
+    <div class="capturas">
+      <img src="img/es-1.webp" width="480" height="853" alt="Tu celular, parlante de la PC: pantalla principal conectada">
+      <img src="img/es-2.webp" width="480" height="853" loading="lazy" alt="Pausa y cambia de tema desde la pantalla de bloqueo">
+      <img src="img/es-3.webp" width="480" height="853" loading="lazy" alt="Modos Juegos, Películas y Música">
+      <img src="img/es-4.webp" width="480" height="853" loading="lazy" alt="Botón en los Ajustes rápidos">
+      <img src="img/es-5.webp" width="480" height="853" loading="lazy" alt="Tema oscuro">
+    </div>
+  </div>
+  <div data-lang="en">
+    <div class="capturas">
+      <img src="img/en-1.webp" width="480" height="853" loading="lazy" alt="Your phone as a PC speaker: main screen connected">
+      <img src="img/en-2.webp" width="480" height="853" loading="lazy" alt="Pause and skip from the lock screen">
+      <img src="img/en-3.webp" width="480" height="853" loading="lazy" alt="Games, Movies and Music modes">
+      <img src="img/en-4.webp" width="480" height="853" loading="lazy" alt="Quick Settings tile">
+      <img src="img/en-5.webp" width="480" height="853" loading="lazy" alt="Dark theme">
+    </div>
+  </div>
 
   <section class="card">
     <h2 data-lang="es">1. Instalá la app en tu PC (Windows 10 u 11)</h2>
@@ -85,6 +140,8 @@
   <section class="card">
     <h2 data-lang="es">2. Instalá la app en tu teléfono (Android 7 o superior)</h2>
     <h2 data-lang="en">2. Install the app on your phone (Android 7 or later)</h2>
+    <p data-lang="es">O escaneá con la cámara del teléfono el código QR que muestra la app de la PC.</p>
+    <p data-lang="en">Or scan the QR code shown by the PC app with your phone's camera.</p>
     <div class="botones">
       <a class="boton" href="https://play.google.com/store/apps/details?id=com.sonidowifi">Google Play</a>
       <a class="boton sec" href="https://github.com/parkerbfb/sonidowifi-web/releases/latest/download/SonidoWifi.apk">
@@ -97,12 +154,12 @@
     <h2 data-lang="en">3. Connect</h2>
     <ol data-lang="es">
       <li>Abrí SonidoWifi en la PC.</li>
-      <li>Con el teléfono en el mismo WiFi (o por cable USB con el anclaje USB activado), abrí SonidoWifi y tocá <b>Conectar</b>.</li>
+      <li>Con el teléfono en el mismo WiFi (o por cable USB con el anclaje USB activado), abrí SonidoWifi y tocá <b>Conectar</b>. O escaneá el QR de la PC: se conecta solo.</li>
       <li>Poné algo a sonar en la PC.</li>
     </ol>
     <ol data-lang="en">
       <li>Open SonidoWifi on the PC.</li>
-      <li>With the phone on the same Wi-Fi (or via USB cable with USB tethering on), open SonidoWifi and tap <b>Connect</b>.</li>
+      <li>With the phone on the same Wi-Fi (or via USB cable with USB tethering on), open SonidoWifi and tap <b>Connect</b>. Or scan the PC's QR code: it connects by itself.</li>
       <li>Play something on the PC.</li>
     </ol>
   </section>
@@ -112,18 +169,85 @@
       <li><b>Todo el audio de la PC</b>juegos, películas, música, llamadas.</li>
       <li><b>Poco retraso</b>modos Juegos, Películas, Música o el retraso que elijas.</li>
       <li><b>WiFi o cable USB</b>por cable: menos retraso y el teléfono se carga.</li>
-      <li><b>Privado</b>sin cuentas, sin publicidad, sin rastreo. El audio no sale de tu red.</li>
-      <li><b>Varios teléfonos a la vez</b>cada uno con sus auriculares: ideal para ver una película sin molestar.</li>
       <li><b>Controlá la PC desde el teléfono</b>pausa, siguiente y anterior desde la notificación o la pantalla de bloqueo.</li>
+      <li><b>Varios teléfonos a la vez</b>cada uno con sus auriculares: ideal para ver una película sin molestar.</li>
+      <li><b>Volumen extra</b>para el parlante del teléfono o auriculares que suenan bajo.</li>
+      <li><b>Se conecta fácil</b>encuentra la PC sola, o escaneá su QR. Y si algo falla, te dice qué revisar.</li>
+      <li><b>Gratis y privado</b>sin anuncios, sin cuentas, sin límites de tiempo. El audio no sale de tu red.</li>
     </ul>
     <ul class="feat" data-lang="en">
       <li><b>All of the PC's audio</b>games, movies, music, calls.</li>
       <li><b>Low delay</b>Games, Movies, Music modes, or the delay you choose.</li>
       <li><b>Wi-Fi or USB cable</b>by cable: lower delay and the phone charges.</li>
-      <li><b>Private</b>no accounts, no ads, no tracking. Audio never leaves your network.</li>
-      <li><b>Several phones at once</b>everyone with their own headphones, great for a quiet movie night.</li>
       <li><b>Control the PC from your phone</b>pause, next and previous from the notification or the lock screen.</li>
+      <li><b>Several phones at once</b>everyone with their own headphones, great for a quiet movie night.</li>
+      <li><b>Extra volume</b>for the phone's speaker or headphones that sound quiet.</li>
+      <li><b>Easy to connect</b>finds the PC by itself, or scan its QR code. If something fails, it tells you what to check.</li>
+      <li><b>Free and private</b>no ads, no accounts, no time limits. Audio never leaves your network.</li>
     </ul>
+  </section>
+
+  <section class="card" data-lang="es">
+    <h2>Preguntas frecuentes</h2>
+    <details>
+      <summary>¿Necesito Bluetooth o un cable especial?</summary>
+      <p>No. Alcanza con que la PC y el teléfono estén en el mismo WiFi (la PC puede ir por cable al router). Si querés todavía menos retraso, usá el cable USB del teléfono con el anclaje USB.</p>
+    </details>
+    <details>
+      <summary>¿Cuánto retraso tiene?</summary>
+      <p>En modo Juegos el teléfono guarda como mucho 30 ms de audio, más lo que tarde tu red (por cable USB, casi nada). En Películas, 60 ms. Los auriculares Bluetooth del teléfono suman su propio retraso.</p>
+    </details>
+    <details>
+      <summary>¿Puedo escuchar la PC con mis auriculares Bluetooth?</summary>
+      <p>Sí: conectalos al teléfono y SonidoWifi lleva el audio de la PC hasta ellos. Sirve para PCs sin Bluetooth.</p>
+    </details>
+    <details>
+      <summary>¿Gasta datos del celular?</summary>
+      <p>No: el audio va por tu red local, no por internet. Sin comprimir usa unos 1,5 Mbps de WiFi; con la calidad Opus, 10 veces menos.</p>
+    </details>
+    <details>
+      <summary>El teléfono no encuentra la PC</summary>
+      <p>Abrí la ventana de la PC: si muestra un aviso del firewall, tocá «Permitir en el firewall». También podés escanear el QR de la ventana con la cámara del teléfono, que conecta directo. En el teléfono, «¿No aparece tu PC?» te muestra qué revisar.</p>
+    </details>
+    <details>
+      <summary>¿Es gratis de verdad?</summary>
+      <p>Sí: sin anuncios, sin cuentas y sin límites de tiempo. La compresión Opus y los varios teléfonos a la vez también son gratis.</p>
+    </details>
+    <details>
+      <summary>¿Funciona en Mac, Linux o iPhone?</summary>
+      <p>Por ahora la PC tiene que tener Windows 10 u 11, y el teléfono Android 7 o más nuevo.</p>
+    </details>
+  </section>
+  <section class="card" data-lang="en">
+    <h2>FAQ</h2>
+    <details>
+      <summary>Do I need Bluetooth or a special cable?</summary>
+      <p>No. The PC and the phone just need to be on the same Wi-Fi (the PC can be wired to the router). For even lower delay, use the phone's USB cable with USB tethering.</p>
+    </details>
+    <details>
+      <summary>How much delay is there?</summary>
+      <p>In Games mode the phone buffers at most 30 ms of audio, plus your network's delay (almost none over USB). In Movies mode, 60 ms. The phone's Bluetooth headphones add their own delay.</p>
+    </details>
+    <details>
+      <summary>Can I listen to my PC with Bluetooth headphones?</summary>
+      <p>Yes: connect them to the phone and SonidoWifi brings the PC's audio to them. Great for PCs without Bluetooth.</p>
+    </details>
+    <details>
+      <summary>Does it use mobile data?</summary>
+      <p>No: audio travels over your local network, not the internet. Uncompressed it uses about 1.5 Mbps of Wi-Fi; with Opus quality, 10 times less.</p>
+    </details>
+    <details>
+      <summary>The phone can't find the PC</summary>
+      <p>Open the PC window: if it shows a firewall warning, click "Allow in the firewall". You can also scan the window's QR code with the phone's camera, which connects directly. On the phone, "PC not showing up?" shows what to check.</p>
+    </details>
+    <details>
+      <summary>Is it really free?</summary>
+      <p>Yes: no ads, no accounts and no time limits. Opus compression and several phones at once are free too.</p>
+    </details>
+    <details>
+      <summary>Does it work on Mac, Linux or iPhone?</summary>
+      <p>For now the PC needs Windows 10 or 11, and the phone Android 7 or newer.</p>
+    </details>
   </section>
 
   <footer>
@@ -135,13 +259,16 @@
 <script>
   // Español para quien tenga el navegador en español; inglés para el resto.
   if (!/^es\b/i.test(navigator.language || "")) document.documentElement.lang = "en";
-  // Mientras la app no esté publicada en la Microsoft Store (el link todavía dice PRODUCT_ID),
-  // no mostramos ese botón y la descarga directa pasa a ser el principal.
-  document.querySelectorAll('a[href*="PRODUCT_ID"]').forEach(function (a) {
-    var siguiente = a.nextElementSibling;
-    a.remove();
-    if (siguiente) siguiente.classList.remove("sec");
-  });
+  // Poner true cuando la app esté publicada en Google Play (hasta entonces su link no existe).
+  var EN_GOOGLE_PLAY = false;
+  // Mientras la app no esté en la Microsoft Store (el link todavía dice PRODUCT_ID) o en Google
+  // Play, no mostramos esos botones y la descarga directa pasa a ser la principal.
+  document.querySelectorAll('a[href*="PRODUCT_ID"]' + (EN_GOOGLE_PLAY ? "" : ', a[href*="play.google.com"]'))
+    .forEach(function (a) {
+      var siguiente = a.nextElementSibling;
+      a.remove();
+      if (siguiente) siguiente.classList.remove("sec");
+    });
 </script>
 </body>
 </html>

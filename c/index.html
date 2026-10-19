@@ -48,9 +48,8 @@
   .nota { font-size: 14px; color: var(--text2); margin: 12px 0 0; }
   footer { color: var(--text2); font-size: 14px; text-align: center; margin-top: 28px; }
   footer a { color: var(--primary); }
-  [data-lang="en"] { display: none; }
-  html[lang="en"] [data-lang="es"] { display: none; }
-  html[lang="en"] [data-lang="en"] { display: revert; }
+  /* Solo se esconde el idioma que no se usa: el otro conserva su display (grid, flex…). */
+  html:not([lang="en"]) [data-lang="en"], html[lang="en"] [data-lang="es"] { display: none !important; }
   [hidden] { display: none !important; }
 </style>
 </head>
@@ -110,6 +109,14 @@
     pc.hidden = false;
   }
   if (!android) document.getElementById("otro").hidden = false;
+  // Poner true cuando la app esté publicada en Google Play (hasta entonces su link no existe).
+  var EN_GOOGLE_PLAY = false;
+  if (!EN_GOOGLE_PLAY) {
+    var play = document.querySelector('a[href*="play.google.com"]');
+    var apk = play.nextElementSibling;
+    play.remove();
+    apk.classList.remove("sec");
+  }
   // Con la app instalada, intentamos abrirla de una (algunos navegadores piden tocar el botón).
   if (android && ips.length) setTimeout(function () { location.href = intent; }, 300);
 </script>
