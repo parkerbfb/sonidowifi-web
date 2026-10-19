@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conectar — SonidoWifi</title>
+<meta name="description" content="Abrí SonidoWifi en el teléfono y conectalo a tu PC.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../favicon.png?v=2">
+<!--
+  A esta página llega el QR de la app de PC: c/#192.168.1.7 (las IPs de la PC, separadas por
+  coma). Con SonidoWifi instalada, el botón abre la app con sonidowifi://conectar?ip=... y se
+  conecta a esa PC; si no está instalada, Chrome va al sitio de descarga (browser_fallback_url).
+-->
+<style>
+  :root {
+    --bg: #F4F6F9; --card: #FFFFFF; --border: #E3E7ED; --text: #1A1D21; --text2: #647080;
+    --primary: #1E88E5; --on-primary: #FFFFFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #111418; --card: #1B1F25; --border: #2A3038; --text: #E7EAEE; --text2: #98A2AE;
+      --primary: #5AAEF0; --on-primary: #0B1826;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 system-ui, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 40px 16px 56px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; }
+  header img { width: 64px; height: 64px; }
+  h1 { font-size: 34px; margin: 0; letter-spacing: -0.5px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 20px;
+    padding: 22px 24px; margin-bottom: 16px;
+  }
+  .card h2 { font-size: 18px; margin: 0 0 6px; }
+  .card p { margin: 0 0 14px; color: var(--text2); }
+  .botones { display: flex; flex-wrap: wrap; gap: 10px; }
+  .boton {
+    display: inline-block; padding: 12px 22px; border-radius: 999px; text-decoration: none;
+    font-weight: 600; background: var(--primary); color: var(--on-primary);
+  }
+  .boton.grande { display: block; text-align: center; padding: 16px 22px; font-size: 18px; }
+  .boton.sec { background: transparent; color: var(--primary); border: 1px solid var(--border); }
+  .nota { font-size: 14px; color: var(--text2); margin: 12px 0 0; }
+  footer { color: var(--text2); font-size: 14px; text-align: center; margin-top: 28px; }
+  footer a { color: var(--primary); }
+  [data-lang="en"] { display: none; }
+  html[lang="en"] [data-lang="es"] { display: none; }
+  html[lang="en"] [data-lang="en"] { display: revert; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="../icono.png?v=2" alt="">
+    <h1>SonidoWifi</h1>
+  </header>
+
+  <section class="card" id="otro" hidden>
+    <h2 data-lang="es">SonidoWifi es para teléfonos Android</h2>
+    <h2 data-lang="en">SonidoWifi is for Android phones</h2>
+    <p data-lang="es">Escaneá el código de la PC con un teléfono Android.</p>
+    <p data-lang="en">Scan the code on the PC with an Android phone.</p>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="es">Conectar a tu PC</h2>
+    <h2 data-lang="en">Connect to your PC</h2>
+    <p data-lang="es">Si ya tenés SonidoWifi en el teléfono, tocá el botón: se abre y se conecta sola a la PC del código.</p>
+    <p data-lang="en">If SonidoWifi is already on your phone, tap the button: it opens and connects to the PC from the code.</p>
+    <a class="boton grande" id="abrir" href="sonidowifi://conectar">
+      <span data-lang="es">Abrir SonidoWifi</span><span data-lang="en">Open SonidoWifi</span></a>
+    <p class="nota" id="pc" hidden></p>
+  </section>
+
+  <section class="card">
+    <h2 data-lang="es">¿Todavía no la tenés?</h2>
+    <h2 data-lang="en">Don't have it yet?</h2>
+    <p data-lang="es">Instalala y volvé a escanear el código que muestra la PC.</p>
+    <p data-lang="en">Install it and scan the code on the PC again.</p>
+    <div class="botones">
+      <a class="boton" href="https://play.google.com/store/apps/details?id=com.sonidowifi">Google Play</a>
+      <a class="boton sec" href="https://github.com/parkerbfb/sonidowifi-web/releases/latest/download/SonidoWifi.apk">
+        <span data-lang="es">APK directo</span><span data-lang="en">Direct APK</span></a>
+    </div>
+  </section>
+
+  <footer><a href="../">SonidoWifi</a></footer>
+</main>
+<script>
+  if (!/^es\b/i.test(navigator.language || "")) document.documentElement.lang = "en";
+  var ips = decodeURIComponent(location.hash.slice(1)).split(",").filter(function (s) {
+    return /^\d{1,3}(\.\d{1,3}){3}$/.test(s);
+  });
+  var consulta = ips.length ? "?ip=" + ips.join(",") : "";
+  var android = /Android/i.test(navigator.userAgent);
+  var sitio = location.href.replace(/c\/(index\.html)?(#.*)?$/, "");
+  // Chrome (y la mayoría en Android): intent con la app, y si no está instalada, al sitio de descarga.
+  var intent = "intent://conectar" + consulta + "#Intent;scheme=sonidowifi;package=com.sonidowifi;"
+      + "S.browser_fallback_url=" + encodeURIComponent(sitio) + ";end";
+  document.getElementById("abrir").href = android ? intent : "sonidowifi://conectar" + consulta;
+  if (ips.length) {
+    var pc = document.getElementById("pc");
+    pc.textContent = "PC: " + ips[0];
+    pc.hidden = false;
+  }
+  if (!android) document.getElementById("otro").hidden = false;
+  // Con la app instalada, intentamos abrirla de una (algunos navegadores piden tocar el botón).
+  if (android && ips.length) setTimeout(function () { location.href = intent; }, 300);
+</script>
+</body>
+</html>
