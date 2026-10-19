@@ -113,12 +113,16 @@
       <li><b>Poco retraso</b>modos Juegos, Películas, Música o el retraso que elijas.</li>
       <li><b>WiFi o cable USB</b>por cable: menos retraso y el teléfono se carga.</li>
       <li><b>Privado</b>sin cuentas, sin publicidad, sin rastreo. El audio no sale de tu red.</li>
+      <li><b>Varios teléfonos a la vez</b>cada uno con sus auriculares: ideal para ver una película sin molestar.</li>
+      <li><b>Controlá la PC desde el teléfono</b>pausa, siguiente y anterior desde la notificación o la pantalla de bloqueo.</li>
     </ul>
     <ul class="feat" data-lang="en">
       <li><b>All of the PC's audio</b>games, movies, music, calls.</li>
       <li><b>Low delay</b>Games, Movies, Music modes, or the delay you choose.</li>
       <li><b>Wi-Fi or USB cable</b>by cable: lower delay and the phone charges.</li>
       <li><b>Private</b>no accounts, no ads, no tracking. Audio never leaves your network.</li>
+      <li><b>Several phones at once</b>everyone with their own headphones, great for a quiet movie night.</li>
+      <li><b>Control the PC from your phone</b>pause, next and previous from the notification or the lock screen.</li>
     </ul>
   </section>
 
@@ -131,6 +135,13 @@
 <script>
   // Español para quien tenga el navegador en español; inglés para el resto.
   if (!/^es\b/i.test(navigator.language || "")) document.documentElement.lang = "en";
+  // Mientras la app no esté publicada en la Microsoft Store (el link todavía dice PRODUCT_ID),
+  // no mostramos ese botón y la descarga directa pasa a ser el principal.
+  document.querySelectorAll('a[href*="PRODUCT_ID"]').forEach(function (a) {
+    var siguiente = a.nextElementSibling;
+    a.remove();
+    if (siguiente) siguiente.classList.remove("sec");
+  });
 </script>
 </body>
 </html>
