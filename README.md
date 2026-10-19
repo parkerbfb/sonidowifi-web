@@ -32,8 +32,9 @@ phone (or scan the QR code shown by the PC with the camera).
 - ⏯️ **Manejá la PC desde el teléfono**: pausa, siguiente y anterior desde la notificación, la
   pantalla de bloqueo o los auriculares, y mirá qué está sonando. · **Control the PC from your
   phone**: pause, next, previous and what's playing.
-- 👥 **Varios teléfonos a la vez**, 🔊 **volumen extra**, 🔒 **permiso para teléfonos nuevos**,
-  🌍 **19 idiomas**. · **Several phones at once**, **extra volume**, **permission for new phones**,
+- 👥 **Varios teléfonos a la vez**, 🔊 **volumen extra**, 🌙 **modo noche** y más graves o voces
+  claras, 🔒 **permiso para teléfonos nuevos**, 🌍 **19 idiomas**. · **Several phones at once**,
+  **extra volume**, **night mode** plus more bass or clear voices, **permission for new phones**,
   **19 languages**.
 - 🆓 **Gratis, sin anuncios, sin cuentas, sin límites de tiempo.** El audio no sale de tu red. ·
   **Free, no ads, no accounts, no time limits.** Audio never leaves your network.
